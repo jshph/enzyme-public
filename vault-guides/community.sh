@@ -1,7 +1,29 @@
 #!/bin/bash
 # Vault guide for community-curated content
 # Shared knowledge, collective sense-making, curated sources
-# Edit the lists below to match your vault
+# Edit the sections below to match your vault
+
+# ============================================
+# WHAT THIS VAULT IS FOR (describe freely)
+# ============================================
+
+ABOUT="
+This is a shared vault for our community's collective thinking.
+We curate sources, track debates, and build shared understanding.
+"
+
+# ============================================
+# WHAT'S ALIVE FOR YOU (optional — delete if nothing comes to mind)
+# ============================================
+# If you're working through something intellectually, mention it here.
+# Examples:
+#   "We keep returning to the tension between depth and accessibility."
+#   "I'm trying to understand what makes certain sources become canonical vs. forgotten."
+#   "There's something about how disagreement works here that I can't quite name."
+# Leave blank if you just want to describe structure.
+
+WHATS_ALIVE="
+"
 
 # ============================================
 # FOLDERS
@@ -11,52 +33,25 @@ FOLDERS="
 sources/
 sources/books/
 sources/papers/
-sources/talks/
 clips/
 discussions/
 members/
 themes/
-archive/
 "
 
 # ============================================
 # TAGS
 # ============================================
 
-# Themes and domains
-THEME_TAGS="
-#theme/technology
-#theme/culture
-#theme/economics
-#theme/ecology
-#theme/governance
-"
+TAGS="
+# Themes
+#theme/technology #theme/culture #theme/ecology
 
-# Source and provenance
-SOURCE_TAGS="
-#source
-#primary
-#secondary
-#clip
-#quote
-#transcript
-"
+# Source types
+#source #primary #clip #quote
 
 # Curation status
-STATUS_TAGS="
-#canonical
-#contested
-#emerging
-#deprecated
-#needs-review
-"
-
-# Contribution tracking
-CONTRIBUTOR_TAGS="
-#contributor
-#guest
-#founding-member
-#perspective
+#canonical #contested #emerging #needs-review
 "
 
 # ============================================
@@ -67,8 +62,6 @@ LINKS="
 [[reading list]]
 [[active debates]]
 [[key voices]]
-[[glossary]]
-[[origin story]]
 [[open questions]]
 "
 
@@ -77,22 +70,9 @@ LINKS="
 # ============================================
 
 CAPTURE="
-Clips and quotes saved to clips/ with source link.
+Clips saved to clips/ with source link.
 Full sources archived in sources/.
-Member profiles in members/.
 Recurring themes get their own note in themes/.
-Discussions captured with date and participants.
-"
-
-# ============================================
-# INTENT - what to surface (optional)
-# ============================================
-
-INTENT="
-Surface tensions between different voices on the same theme.
-Find where consensus is forming vs. still contested.
-Notice which contributors keep returning to which themes.
-Connect new sources to existing debates.
 "
 
 # ============================================
@@ -100,29 +80,32 @@ Connect new sources to existing debates.
 # ============================================
 
 cat <<EOF
-## Folders
+## About this vault
+${ABOUT}
+EOF
+
+# Only include "What's alive" section if it has content
+if [ -n "$(echo "${WHATS_ALIVE}" | tr -d '[:space:]')" ]; then
+cat <<EOF
+
+## What's alive for us
+${WHATS_ALIVE}
+EOF
+fi
+
+cat <<EOF
+
+## Structure
+
+### Folders
 ${FOLDERS}
 
-## Tags
+### Tags
+${TAGS}
 
-### Themes and domains
-${THEME_TAGS}
-
-### Source and provenance
-${SOURCE_TAGS}
-
-### Curation status
-${STATUS_TAGS}
-
-### Contribution tracking
-${CONTRIBUTOR_TAGS}
-
-## Links
+### Links
 ${LINKS}
 
-## Capture habits
+### Capture habits
 ${CAPTURE}
-
-## What to surface
-${INTENT}
 EOF

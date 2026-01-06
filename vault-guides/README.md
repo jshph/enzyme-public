@@ -1,67 +1,73 @@
 # Vault Guides
 
-A vault guide tells Enzyme which entities to pay attention to. It's **optional**—Enzyme intelligently detects what kind of thinking your vault contains—but a vault guide lets you shape how content clusters.
+A vault guide tells Enzyme about your vault. It's **optional**—Enzyme intelligently detects your vault's structure—but a vault guide helps you shape what matters.
 
-## Why structure matters
+## Two Kinds of Information
 
-Enzyme treats your tags, links, and folders as **semantic clusters**. The structure you provide determines how content groups together—and how catalysts probe it.
+A vault guide can contain two types of information:
 
-**Hierarchical tags create nested meaning.**
+### 1. Structure (folders, tags, links)
 
-```
-#travel
-#travel/pyrenees
-#travel/roadtrips
-#travel/pilgrimages
-```
-
-Content tagged `#travel/pyrenees` belongs to both the Pyrenees cluster *and* the broader travel cluster. A catalyst for `#travel` can pull from all of them. A catalyst for `#travel/pyrenees` stays focused.
-
-**Tag clusters serve different purposes.**
+This tells Enzyme *where to look* and *how content clusters*:
 
 ```
-# Ideas and concepts     → what you're thinking about
-#idea #seedling #thread
+## Folders
+Readwise/
+journal/daily/
+people/
 
-# Areas of life          → where the thinking lives
-#work #health #faith
+## Tags
+#idea #question #unresolved
 
-# Actions and status     → what needs attention
-#question #revisit #unresolved
-
-# Sources                → where it came from
-#book #conversation #experience
-```
-
-Enzyme sees these clusters and generates catalysts accordingly. An entity like `#question` gathers every unresolved thing across your vault—catalysts probe that collection, not individual notes.
-
-**Wikilinks anchor concepts.**
-
-```
+## Links
 [[open questions]]
 [[things I believe]]
-[[people who shaped me]]
 ```
 
-These aren't folders. They're notes that other notes reference. Enzyme treats them as entities, clustering everything that links to them.
+Enzyme uses this to select which entities get catalyst questions generated for them.
 
-**Folders group by location.**
+### 2. What You're Thinking About (optional)
+
+This is different. If you're working through something intellectually—a tension, a question, an aspiration—you can mention it. Enzyme will use this to calibrate the *angle* of its questions.
+
+**You don't have to articulate tensions.** If you just describe your vault structure, that's fine. The catalyst questions will still be good—they surface what's in your notes.
+
+**But if something is alive for you**, mentioning it helps. Some examples:
 
 ```
-people/
-people/investors/
-people/advisors/
-Readwise/Books/
-journal/daily/
+I keep circling back to the tension between building in public
+and protecting ideas until they're ready.
+
+I'm trying to develop more strategic thinking about my life decisions.
+
+I notice I keep avoiding questions about long-term commitment.
+
+I want to think more like an ecologist—noticing systems, not just parts.
 ```
 
-Content in `people/investors/` forms its own cluster. Nested folders create nested clusters. A note in `people/investors/` might also be tagged `#warm` and link to `[[pipeline]]`—it belongs to multiple clusters at once.
+These aren't required. Write whatever feels true about your vault and your thinking. The system will detect whether there's intellectual signal worth using.
 
-**Recency matters.** Within each cluster, Enzyme prioritizes what you've touched recently. A `people/` folder surfaces the people you've been thinking about lately, not everyone equally. Same for tags—recent mentions surface first.
+## What to Write
 
-## Using These Templates
+Write whatever comes naturally. There's no wrong format. Some people describe their folder structure. Others describe what they're wrestling with. Most people do both.
 
-Each script outputs a vault guide you can optionally pass to `enzyme init`. Run the script, edit the lists to match your vault, done.
+**Examples of what people write:**
+
+> "This is where I process what I read and connect it to my work."
+
+> "I use tags for status: #question, #developing, #evergreen. Readwise highlights sync to Readwise/. Morning pages go in journal/daily/."
+
+> "I'm trying to understand why I resist long-term planning even though I know it helps."
+
+> "Book notes and project planning. I tag sources with #book, #article, #conversation."
+
+> "I keep returning to questions about how the tools I use shape what thoughts feel possible."
+
+All of these are valid. The system adapts to what you provide.
+
+## Using the Templates
+
+Each script outputs a starting template. Run it, edit to match your vault, done.
 
 ```bash
 ./personal.sh       # Individual reflection — journal, reading, personal notes
@@ -69,57 +75,36 @@ Each script outputs a vault guide you can optionally pass to `enzyme init`. Run 
 ./business-crm.sh   # Relationships — pipeline, investors, CRM-style tracking
 ```
 
-## What Goes in a Vault Guide
+## Structure Reference
 
-**Folders** — where content lives, including nesting
+If you want to include structure, here's what Enzyme recognizes:
 
+**Tags** — including hierarchies
 ```
-Readwise/
+#travel
+#travel/pyrenees
+#question
+```
+
+**Wikilinks** — concept notes that other notes reference
+```
+[[open questions]]
+[[things I believe]]
+```
+
+**Folders** — where content lives
+```
 Readwise/Books/
-journal/
 journal/daily/
 people/
 ```
 
-**Tags** — organized by purpose, including hierarchies
-
-```
-# Ideas
-#idea #seedling #thread
-
-# Areas
-#work #travel #travel/pyrenees
-
-# Actions
-#question #revisit #blocked
-```
-
-**Links** — concept notes that other notes reference
-
-```
-[[open questions]]
-[[weekly review]]
-[[books that changed me]]
-```
-
 **Capture habits** — how content arrives
-
 ```
 Kindle highlights sync to Readwise/.
-Morning pages in journal/daily/.
 Each person gets a note in people/.
 ```
 
-**Intent (optional)** — what you want to surface
+## Customizing
 
-```
-Surface tensions between what I read and what I write.
-Notice which people keep showing up in my thinking.
-Find questions that keep appearing across different areas.
-```
-
-The entity lists tell Enzyme *what clusters exist*. The intent (if provided) helps tune *what to look for* within them.
-
-## Customizing the Scripts
-
-Edit the tag and folder variables to match your vault. The output is just text—copy it, modify it, use what's useful.
+Edit the scripts to match your vault. The output is just text—copy it, modify it, use what's useful.

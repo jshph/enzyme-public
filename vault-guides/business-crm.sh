@@ -1,7 +1,29 @@
 #!/bin/bash
 # Vault guide for relationship and pipeline tracking
 # Investors, partners, clients, CRM-style notes
-# Edit the lists below to match your vault
+# Edit the sections below to match your vault
+
+# ============================================
+# WHAT THIS VAULT IS FOR (describe freely)
+# ============================================
+
+ABOUT="
+This is where I track relationships and manage pipeline.
+I keep notes on investors, partners, and key contacts.
+"
+
+# ============================================
+# WHAT'S ALIVE FOR YOU (optional — delete if nothing comes to mind)
+# ============================================
+# If you're working through something intellectually, mention it here.
+# Examples:
+#   "I'm trying to figure out what moves deals forward vs. just generates activity."
+#   "I keep avoiding certain follow-ups and I'm not sure why."
+#   "I want to get better at knowing when to push vs. when to let things breathe."
+# Leave blank if you just want to describe structure.
+
+WHATS_ALIVE="
+"
 
 # ============================================
 # FOLDERS
@@ -11,56 +33,23 @@ FOLDERS="
 people/
 people/investors/
 people/partners/
-people/advisors/
 meetings/
 deals/
-intros/
-updates/
 "
 
 # ============================================
 # TAGS
 # ============================================
 
+TAGS="
 # Relationship types
-RELATIONSHIP_TAGS="
-#investor
-#investor/angel
-#investor/vc
-#investor/strategic
-#partner
-#advisor
-#customer
-#prospect
-"
+#investor #partner #advisor #customer #prospect
 
-# Pipeline and status
-PIPELINE_TAGS="
-#stage/cold
-#stage/warm
-#stage/active
-#stage/closing
-#stage/closed
-#stage/passed
-"
+# Pipeline stages
+#stage/cold #stage/warm #stage/active #stage/closing
 
-# Actions and follow-ups
-ACTION_TAGS="
-#follow-up
-#intro-needed
-#waiting-on
-#schedule
-#sent-deck
-#term-sheet
-"
-
-# Relationship signals
-SIGNAL_TAGS="
-#champion
-#decision-maker
-#blocker
-#warm-intro
-#cold-outreach
+# Actions
+#follow-up #waiting-on #sent-deck
 "
 
 # ============================================
@@ -70,10 +59,7 @@ SIGNAL_TAGS="
 LINKS="
 [[pipeline]]
 [[target list]]
-[[investor update template]]
-[[intro request queue]]
 [[pass reasons]]
-[[closed deals]]
 "
 
 # ============================================
@@ -84,20 +70,6 @@ CAPTURE="
 Each person gets a note in people/.
 Meeting notes same day, linked to person.
 Deal stages tracked with dated updates.
-Intros requested logged in intros/.
-Monthly investor updates in updates/.
-"
-
-# ============================================
-# INTENT - what to surface (optional)
-# ============================================
-
-INTENT="
-Surface relationships that have gone quiet.
-Find patterns in what moves deals forward.
-Notice who I haven't followed up with.
-Connect people who should know each other.
-Identify signals I might be missing.
 "
 
 # ============================================
@@ -105,29 +77,32 @@ Identify signals I might be missing.
 # ============================================
 
 cat <<EOF
-## Folders
+## About this vault
+${ABOUT}
+EOF
+
+# Only include "What's alive" section if it has content
+if [ -n "$(echo "${WHATS_ALIVE}" | tr -d '[:space:]')" ]; then
+cat <<EOF
+
+## What's alive for me
+${WHATS_ALIVE}
+EOF
+fi
+
+cat <<EOF
+
+## Structure
+
+### Folders
 ${FOLDERS}
 
-## Tags
+### Tags
+${TAGS}
 
-### Relationship types
-${RELATIONSHIP_TAGS}
-
-### Pipeline and status
-${PIPELINE_TAGS}
-
-### Actions and follow-ups
-${ACTION_TAGS}
-
-### Relationship signals
-${SIGNAL_TAGS}
-
-## Links
+### Links
 ${LINKS}
 
-## Capture habits
+### Capture habits
 ${CAPTURE}
-
-## What to surface
-${INTENT}
 EOF

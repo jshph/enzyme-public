@@ -1,7 +1,29 @@
 #!/bin/bash
 # Vault guide for personal reflection vaults
 # Journal, reading highlights, individual sense-making
-# Edit the lists below to match your vault
+# Edit the sections below to match your vault
+
+# ============================================
+# WHAT THIS VAULT IS FOR (describe freely)
+# ============================================
+
+ABOUT="
+This is where I process what I read and connect it to my life.
+I capture book highlights, write morning pages, and track ideas as they develop.
+"
+
+# ============================================
+# WHAT'S ALIVE FOR YOU (optional — delete if nothing comes to mind)
+# ============================================
+# If you're working through something intellectually, mention it here.
+# Examples:
+#   "I keep returning to questions about how tools shape thought."
+#   "I'm trying to develop more strategic thinking about my life."
+#   "I notice I avoid committing to long-term plans."
+# Leave blank if you just want to describe structure.
+
+WHATS_ALIVE="
+"
 
 # ============================================
 # FOLDERS
@@ -11,12 +33,9 @@ FOLDERS="
 Readwise/
 Readwise/Books/
 Readwise/Articles/
-Readwise/Podcasts/
 journal/
 journal/daily/
-journal/weekly/
 inbox/
-notes/
 people/
 "
 
@@ -24,78 +43,35 @@ people/
 # TAGS
 # ============================================
 
-# Ideas and concepts
-IDEA_TAGS="
-#idea
-#seedling
-#evergreen
-#thread
-#tension
-"
+TAGS="
+# Ideas and status
+#idea #seedling #evergreen #question #unresolved
 
-# Areas of life
-AREA_TAGS="
-#work
-#travel
-#travel/pyrenees
-#travel/roadtrips
-#health
-#creativity
-#faith
-"
+# Areas
+#work #health #creativity
 
-# Actions and status
-ACTION_TAGS="
-#question
-#unresolved
-#revisit
-#to-develop
-#sparked-by
-"
-
-# Source types
-SOURCE_TAGS="
-#book
-#article
-#podcast
-#conversation
-#experience
+# Sources
+#book #article #conversation
 "
 
 # ============================================
-# LINKS (concept notes, not folders)
+# LINKS (concept notes that other notes reference)
 # ============================================
 
 LINKS="
 [[open questions]]
 [[things I believe]]
-[[recurring dreams]]
-[[people who shaped me]]
 [[books that changed me]]
 "
 
 # ============================================
-# CAPTURE HABITS
+# CAPTURE HABITS (how content arrives)
 # ============================================
 
 CAPTURE="
 Kindle highlights sync to Readwise/.
-Article highlights sync to Readwise/Articles/.
-Quick thoughts go to inbox/.
 Morning pages in journal/daily/.
-Weekly review in journal/weekly/.
 People I think about get notes in people/.
-"
-
-# ============================================
-# INTENT - what to surface (optional)
-# ============================================
-
-INTENT="
-Surface tensions between what I read and what I write.
-Find questions that keep appearing across different areas.
-Connect highlights to personal experiences.
-Notice which people keep showing up in my thinking.
 "
 
 # ============================================
@@ -103,29 +79,32 @@ Notice which people keep showing up in my thinking.
 # ============================================
 
 cat <<EOF
-## Folders
+## About this vault
+${ABOUT}
+EOF
+
+# Only include "What's alive" section if it has content
+if [ -n "$(echo "${WHATS_ALIVE}" | tr -d '[:space:]')" ]; then
+cat <<EOF
+
+## What's alive for me
+${WHATS_ALIVE}
+EOF
+fi
+
+cat <<EOF
+
+## Structure
+
+### Folders
 ${FOLDERS}
 
-## Tags
+### Tags
+${TAGS}
 
-### Ideas and concepts
-${IDEA_TAGS}
-
-### Areas of life
-${AREA_TAGS}
-
-### Actions and status
-${ACTION_TAGS}
-
-### Source types
-${SOURCE_TAGS}
-
-## Links
+### Links
 ${LINKS}
 
-## Capture habits
+### Capture habits
 ${CAPTURE}
-
-## What to surface
-${INTENT}
 EOF
