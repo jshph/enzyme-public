@@ -73,6 +73,7 @@ Each script outputs a starting template. Run it, edit to match your vault, done.
 ./personal.sh       # Individual reflection — journal, reading, personal notes
 ./community.sh      # Curated content — shared knowledge, collective sense-making
 ./business-crm.sh   # Relationships — pipeline, investors, CRM-style tracking
+./research.sh       # Academic research — literature review, thesis, research notes
 ```
 
 ## Structure Reference
