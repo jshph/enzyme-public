@@ -1,3 +1,5 @@
+**[enzyme.garden](https://enzyme.garden)** — main site with installation and usage docs.
+
 ## What's in this repo
 
 This README explains the concepts. For practical setup, see [vault-guides/](./vault-guides/)—shell script templates to (optionally) help you describe your vault structure before running `enzyme init`.
